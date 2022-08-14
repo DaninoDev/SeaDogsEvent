@@ -16,6 +16,10 @@
     "categoriaVoiceCreateAC" : "999227369921466368",
     "categoriaVoiceCreateBR" : "999227297695547412",
     "categoriaVoiceCreateTDM" : "999227301092933642",
+    "ChannelClockID" : "1008294358807756821",
+    "Timezone" : "Europe/Berlin",
+    "Format" : "HH:mm (z)",
+    "UpdateInterval" : "60000",
     "keyPerms" : {
         "VIEW_CHANNEL" : true,
         "MANAGE_CHANNELS" : false,
