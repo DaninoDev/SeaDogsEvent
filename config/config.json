@@ -19,7 +19,7 @@
     "ChannelClockID" : "1008294358807756821",
     "Timezone" : "Europe/Berlin",
     "Format" : "HH:mm (z)",
-    "UpdateInterval" : "60000",
+    "UpdateInterval" : "600000",
     "keyPerms" : {
         "VIEW_CHANNEL" : true,
         "MANAGE_CHANNELS" : false,
