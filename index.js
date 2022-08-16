@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Intents, Permissions, MessageEmbed } = require('discord.js');
-const { token, canaleVoiceCreateAC, canaleVoiceCreateBR, canaleVoiceCreateTDM, categoriaVoiceCreateAC, categoriaVoiceCreateBR, categoriaVoiceCreateTDM, keyPerms, ChannelClockID, Timezone, Format, UpdateInterval} = require('./config/config.json');
+const { token, canaleVoiceCreateAC, canaleVoiceCreateBR, canaleVoiceCreateSTREAM, categoriaVoiceCreateAC, categoriaVoiceCreateBR, categoriaVoiceCreateSTREAM, keyPerms, ChannelClockID, Timezone, Format, UpdateInterval, StreamerPerms} = require('./config/config.json');
 const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'], intents: Object.values(Intents.FLAGS) } );
 const TempChannels = require("discord-temp-channels");
 const tempChannels = new TempChannels(client);
@@ -42,12 +42,12 @@ tempChannels.registerChannel(canaleVoiceCreateBR, { // ?Registrazione
 	childBitrate: 64000,
 });
 
-tempChannels.registerChannel(canaleVoiceCreateTDM, { // ?Registrazione
-	childFormat: (member) => `🎧 | ${member.user.username}'s Channel`,
-	childCategory: categoriaVoiceCreateTDM, 
+tempChannels.registerChannel(canaleVoiceCreateSTREAM, { // ?Registrazione
+	childFormat: (member, count) => `🟣 | Sala Streamer #${count}`,
+	childCategory: categoriaVoiceCreateSTREAM, 
 	childAutoDeleteIfEmpty: true,
 	childAutoDeleteIfOwnerLeaves: false,
-	childMaxUsers: 5,
+	childMaxUsers: 0,
 	childBitrate: 64000,
 });
 
@@ -78,17 +78,13 @@ tempChannels.on('childCreate', async (member, channel) => { // ?Editing
 	});
 });
 tempChannels.on('childCreate', async (member, channel) => { // ?Editing
-	const usersA = await Manage.find();
-	usersA.forEach(async (userA) => {
-		if (channel.parentId != categoriaVoiceCreateTDM) return;
-		if (member.roles.cache.some(role => role.id === userA.teamRoleID)) {
-			await channel.setName(userA.teamChannelName + '\'s Team');
-			await channel.permissionOverwrites.edit(userA.teamRoleID, keyPerms);
+		if (channel.parentId != categoriaVoiceCreateSTREAM) return;
+		if (member.roles.cache.some(role => role.id === "1006286188484767926")) {
+			await channel.permissionOverwrites.edit("1006286188484767926", StreamerPerms);
 			await channel.permissionOverwrites 
-			await channel.setUserLimit(userA.userLimit);
-			await channel.setBitrate(userA.bitrate);
+			await channel.setUserLimit("0");
+			await channel.setBitrate("64000");
 		}
-	});
 });
 
 //reaction role
