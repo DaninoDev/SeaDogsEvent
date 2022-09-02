@@ -7,19 +7,19 @@ module.exports = {
             connectTimeoutMS: 10000,
             family: 4
         }; 
-        connect('mongodb+srv://Daninogamer:1sv5QX0OCKduzvWj@seadogsevents.8r0ji.mongodb.net/Data', dbOptions);
+        connect('NaN', dbOptions);
         Promise = global.Promise;
 
         connection.on('connected', () => {
-            console.log('Conessione al DataBase "SeaDogsEvents" avvenuta con successo! ✅');
+            console.log('Conessione al DataBase avvenuta con successo! ✅');
         });
 
         connection.on('err', err => {
-            console.error(`Conessione al DataBase "SeaDogsEvents" non riuscita! ❌: \n${err.message}`);
+            console.error(`Conessione al DataBase non riuscita! ❌: \n${err.message}`);
         });
 
         connection.on('disconnected', () => {
-            console.warn('Conessione al DataBase "SeaDogsEvents" persa! ❌');
+            console.warn('Conessione al DataBase persa! ❌');
         });
     }
 };
