@@ -7,7 +7,7 @@ module.exports = {
             connectTimeoutMS: 10000,
             family: 4
         }; 
-        connect('NaN', dbOptions);
+        connect('mongodb+srv://Daninogamer:1sv5QX0OCKduzvWj@seadogsevents.8r0ji.mongodb.net/Data', dbOptions);
         Promise = global.Promise;
 
         connection.on('connected', () => {
