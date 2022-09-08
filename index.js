@@ -51,6 +51,15 @@ tempChannels.registerChannel(canaleVoiceCreateSTREAM, { // ?Registrazione
 	childBitrate: 64000,
 });
 
+tempChannels.registerChannel('1014579945978204270', { // ?Registrazione
+	childFormat: (member, count) => `🧨 Lobby #${count}`,
+	childCategory: '1014579591823753307', 
+	childAutoDeleteIfEmpty: true,
+	childAutoDeleteIfOwnerLeaves: false,
+	childMaxUsers: 0,
+	childBitrate: 64000,
+});
+
 tempChannels.on('childCreate', async (member, channel) => { // ?Editing
 	const usersA = await Manage.find();
 	usersA.forEach(async (userA) => {
